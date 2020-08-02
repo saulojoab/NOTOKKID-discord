@@ -1,0 +1,28 @@
+{
+  "name": "notookkid",
+  "version": "1.0.0",
+  "description": "your best friend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saulojoab/NOTOKKID-discord.git"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "cute"
+  ],
+  "author": "Saulo Joab Penha Simplício",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saulojoab/NOTOKKID-discord/issues"
+  },
+  "homepage": "https://github.com/saulojoab/NOTOKKID-discord#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
+  }
+}
