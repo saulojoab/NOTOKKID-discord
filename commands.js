@@ -1,7 +1,7 @@
 const commands = {
-    'say': {
+    'falar': {
         'action': (message) => {
-            const messageToSend = message.content.replace('!say', '');
+            const messageToSend = message.content.replace('!falar', '');
 
             if (messageToSend === '') {
                 message.channel.send('você quer que eu não fale nada? que eu fique calado? você me odeia?');
@@ -25,7 +25,7 @@ tem o email tambem caso queira alo@saulojoab.com
             `).then(() => {
                 message.channel.send(`${message.author} te mandei as redes do laud na dm ok`)
             }).catch((e) => {
-                message.channel.send(`${message.author} não consigo te mandar dm pra mandar as redes :(`)
+                message.channel.send(`${message.author} não consigo te mandar dm pra mandar as redes, acho que tua dm é fechada :(`)
             }); 
         }
     },
