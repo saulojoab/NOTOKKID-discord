@@ -18,7 +18,7 @@ client.on('guildMemberAdd', member => {
 
     const randomMessagePosition = generateRandomInt(messages.length - 1, 0);
 
-    member.guild.channels.cache.get('740068253077864460').send(message[randomMessagePosition]); 
+    member.guild.channels.cache.get('740068253077864460').send(messages[randomMessagePosition]); 
 });
 
 client.on('message', async message => {
@@ -26,12 +26,12 @@ client.on('message', async message => {
         return;
     }
 
-    if (!(message.channel.id === '740066704993943553' || message.channel.id === '739385128609906769')) {
-        message.channel.send('eu só respondo seus comando se tu mandar lá no <#740066704993943553>...');
+    if (!message.content.startsWith('!')) {
         return;
     }
 
-    if (!message.content.startsWith('!')) {
+    if (!message.member.id === '396083444087652352' && !(message.channel.id === '740066704993943553' || message.channel.id === '739385128609906769')) {
+        message.channel.send('eu só respondo seus comando se tu mandar lá no <#740066704993943553>...');
         return;
     }
 

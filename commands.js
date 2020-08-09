@@ -14,6 +14,7 @@ meus comandos são:
 !responde - eu respondo uma pergunta com sim ou não
 !notokkid - eu falo um pouco sobre mim
 !sugestao - eu te dou uma sugestão aleatoria sobre as coisas que o laud gosta
+!todepresso - caso vc esteja triste eu irei te ajudar
             `).then(() => {
                 message.channel.send(`${message.author} te mandei os comandos na dm blz`)
             }).catch((e) => {
@@ -64,6 +65,16 @@ tem o email tambem caso queira alo@saulojoab.com
     'dados': {
         'action': (message) => {
             message.channel.send(`:game_die: O resultado foi: ${Math.floor(Math.random() * (6 - 1 + 1)) + 1}`);
+        }
+    },
+
+    'todepresso': {
+        'action': async (message) => {
+            message.channel.send(`${message.author} vo te ajuda perai`)
+            const res = await axios.default.get('https://some-random-api.ml/img/birb');
+
+            const data = res.data;
+            message.channel.send(`${message.author} toma: ${data.link}`)
         }
     },
     
