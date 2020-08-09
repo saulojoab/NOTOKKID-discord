@@ -1,9 +1,12 @@
 require('dotenv').config()
+const http = require('http')
 const commands = require('./commands')
 const generateRandomInt = require('./utils/randomIntGenerator');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
+
+http.createServer().listen(process.env.PORT);
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
