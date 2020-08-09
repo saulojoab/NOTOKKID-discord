@@ -30,7 +30,7 @@ client.on('message', async message => {
         return;
     }
 
-    if (!message.member.id === '396083444087652352' && !(message.channel.id === '740066704993943553' || message.channel.id === '739385128609906769')) {
+    if (!(message.member.id === '396083444087652352') && !(message.channel.id === '740066704993943553' || message.channel.id === '739385128609906769')) {
         message.channel.send('eu só respondo seus comando se tu mandar lá no <#740066704993943553>...');
         return;
     }
