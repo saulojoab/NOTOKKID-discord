@@ -12,11 +12,14 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', async member => {
+    await member.roles.add('741932075946344469');
+    
     const messages = [
         `ora ora se não é o queridissimo ser humano ${member}. dá uma lida no <#740068312167219275>`,
         `FAAAAAALA ${member}. que bom ter você aqui. olha o <#740068312167219275> por favor`,
         `hmmmm chegaste chegaste ${member}??? bem vindo, querido ser humano. lê o <#740068312167219275> please`,
+        `hello world ${member}. da uma bizoiada no <#740068312167219275>`,
     ]
 
     const randomMessagePosition = generateRandomInt(messages.length - 1, 0);
