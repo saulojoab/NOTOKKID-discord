@@ -12,6 +12,8 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+setInterval(() => console.log('não dorme arrombado'), 10000 * 6);
+
 client.on('guildMemberAdd', async member => {
     await member.roles.add('741932075946344469');
     
