@@ -6,7 +6,20 @@ const generateRandomInt = require('./utils/randomIntGenerator');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-http.createServer().listen(process.env.PORT);
+const express = require('express');
+const app = express();
+
+app.get("/", (request, response) => {
+    console.log(Date.now() + " Ping Received");
+    response.sendStatus(200);
+});
+
+app.listen(process.env.PORT || 5000, () => console.log(`[OK COMPUTER] We're running at port ${process.env.PORT || 5000}`));
+
+setInterval(() => {
+    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
+}, 280000);
+
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
