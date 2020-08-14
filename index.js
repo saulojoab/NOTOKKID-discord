@@ -16,11 +16,6 @@ app.get("/", (request, response) => {
 
 app.listen(process.env.PORT || 5000, () => console.log(`[OK COMPUTER] We're running at port ${process.env.PORT || 5000}`));
 
-setInterval(() => {
-    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
-
-
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
