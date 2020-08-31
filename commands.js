@@ -1,7 +1,4 @@
-const axios = require('axios');
-const spotify = require('./spotify');
 const generateRandomInt = require('./utils/randomIntGenerator');
-
 
 const commands = {
     'comandos': {
@@ -64,17 +61,15 @@ tem o email tambem caso queira alo@saulojoab.com
 
     'dados': {
         'action': (message) => {
-            message.channel.send(`:game_die: O resultado foi: ${Math.floor(Math.random() * (6 - 1 + 1)) + 1}`);
+            message.channel.send(`:game_die: O resultado foi: ${generateRandomInt(6, 1)}`);
         }
     },
 
     'todepresso': {
         'action': async (message) => {
+            const image = generateRandomInt(12, 1)
             message.channel.send(`${message.author} vo te ajuda perai`)
-            const res = await axios.default.get('https://some-random-api.ml/img/birb');
-
-            const data = res.data;
-            message.channel.send(`${message.author} toma: ${data.link}`)
+            message.channel.send(`${message.author} toma: https://img.saulojoab.com/notokkid/birbs/${image}.jpg`)
         }
     },
     
