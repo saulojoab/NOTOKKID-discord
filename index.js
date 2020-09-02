@@ -4,23 +4,16 @@ const commands = require('./commands')
 const generateRandomInt = require('./utils/randomIntGenerator');
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
 const express = require('express');
 const app = express();
-
-app.get("/", (request, response) => {
-    console.log(Date.now() + " Ping Received");
-    response.sendStatus(200);
-});
 
 app.listen(process.env.PORT || 5000, () => console.log(`[OK COMPUTER] We're running at port ${process.env.PORT || 5000}`));
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-
-setInterval(() => console.log('não dorme arrombado'), 10000 * 6);
 
 client.on('guildMemberAdd', async member => {
     await member.roles.add('741932075946344469');
@@ -36,6 +29,28 @@ client.on('guildMemberAdd', async member => {
 
     member.guild.channels.cache.get('740068253077864460').send(messages[randomMessagePosition]); 
 });
+
+client.on('messageReactionAdd', async (reaction, user) => {
+    const guild = reaction.message.guild;
+
+    let role = await guild.roles.fetch('750493462125740082')
+
+    if (reaction.message.id === '750505629260578976') {
+        const memberWhoReacted = await guild.members.fetch(user.id)
+        memberWhoReacted.roles.add(role)
+    }
+})
+
+client.on('messageReactionRemove', async (reaction, user) => {
+    const guild = reaction.message.guild;
+
+    let role = await guild.roles.fetch('750493462125740082')
+
+    if (reaction.message.id === '750505629260578976') {
+        const memberWhoReacted = await guild.members.fetch(user.id);
+        memberWhoReacted.roles.remove(role)
+    }
+})
 
 client.on('message', async message => {
     if (message.member.id === client.user.id) {
@@ -59,7 +74,6 @@ client.on('message', async message => {
     }
 
     message.channel.send('não tendi esse comando...')
-
 });
 
 client.login(process.env.DISCORD_TOKEN);
