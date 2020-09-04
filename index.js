@@ -1,7 +1,7 @@
 require('dotenv').config()
 const http = require('http')
 const commands = require('./commands')
-const generateRandomInt = require('./utils/randomIntGenerator');
+const { randomItemFromList } = require('./utils/');
 
 const Discord = require('discord.js');
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
@@ -25,9 +25,7 @@ client.on('guildMemberAdd', async member => {
         `hello world ${member}. da uma bizoiada no <#740068312167219275>`,
     ]
 
-    const randomMessagePosition = generateRandomInt(messages.length - 1, 0);
-
-    member.guild.channels.cache.get('740068253077864460').send(messages[randomMessagePosition]); 
+    member.guild.channels.cache.get('740068253077864460').send(randomItemFromList(messages)); 
 });
 
 client.on('messageReactionAdd', async (reaction, user) => {
@@ -73,7 +71,14 @@ client.on('message', async message => {
         return;
     }
 
-    message.channel.send('não tendi esse comando...')
+    message.channel.send(randomItemFromList([
+        "hmm, não entendi o que era pra eu fazer...",
+        "eu não conheço esse comando..",
+        "quê? não entendo o que era pra fazer",
+        "não entendi esse comando, tu escreveu certo?",
+        "entendi nada desse comando aí",
+        "oxe? que? tendi foi nada desse comando.."
+    ]))
 });
 
 client.login(process.env.DISCORD_TOKEN);

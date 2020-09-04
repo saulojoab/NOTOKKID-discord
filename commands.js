@@ -1,4 +1,4 @@
-const generateRandomInt = require('./utils/randomIntGenerator');
+const { randomItemFromList, generateRandomInt } = require('./utils/');
 
 const commands = {
     'comandos': {
@@ -61,13 +61,13 @@ tem o email tambem caso queira alo@saulojoab.com
 
     'dados': {
         'action': (message) => {
-            message.channel.send(`:game_die: O resultado foi: ${generateRandomInt(6, 1)}`);
+            message.channel.send(`:game_die: O resultado foi: ${generateRandomInt(1, 6)}`);
         }
     },
 
     'todepresso': {
         'action': async (message) => {
-            const image = generateRandomInt(12, 1)
+            const image = generateRandomInt(1, 12)
             message.channel.send(`${message.author} vo te ajuda perai`)
             message.channel.send(`${message.author} toma: https://img.saulojoab.com/notokkid/birbs/${image}.jpg`)
         }
@@ -75,18 +75,17 @@ tem o email tambem caso queira alo@saulojoab.com
     
     'responde': {
         'action': (message) => {
-            const answer = generateRandomInt(1, 0);
-            const res = generateRandomInt(4, 0);
+            const answer = generateRandomInt(0, 1);
 
             const yes = ['sim', 'claro que sim', 'obviamente', 'é obvio', 'com certeza']
             const no = ['não', 'claro que não', 'tá doido? não...', 'não né', 'nem ferrando']
 
             if (answer === 1) {
-                message.channel.send(`${message.author} ${yes[res]}`);
+                message.channel.send(`${message.author} ${randomItemFromList(yes)}`);
                 return;
             }
 
-            message.channel.send(`${message.author} ${no[res]}`);
+            message.channel.send(`${message.author} ${randomItemFromList(no)}`);
         }
     },
     'sugestao': {
@@ -118,9 +117,7 @@ tem o email tambem caso queira alo@saulojoab.com
                 'francisco (chico) é meu amigo e faz streams também e elas são divertidassas, da uma olhada: https://twitch.tv/chicovn'
             ]
 
-            const position = generateRandomInt(recommendations.length, 0);
-
-            message.channel.send(`${message.author} ${recommendations[position]}`);
+            message.channel.send(`${message.author} ${randomItemFromList(recommendations)}`);
         }
     }
 }
